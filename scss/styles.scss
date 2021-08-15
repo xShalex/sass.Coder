@@ -1,0 +1,119 @@
+$borderwhite: solid white;
+$borderviolet: solid blueviolet;
+$borderpx: 5px;
+$servicio: Boosting;
+$servicio: Coaching;
+$servicio: Smurfs;
+$pais: br;
+$pais: otros;
+$pais: arg;
+$redes:(
+    ig: 100px,
+    ds: 125px,
+);
+$fontpx: 40px;
+$fontcolor: green;
+
+@mixin tamaño($fontpx, $fontcolor) {
+    font-size: $fontpx;
+    color: $fontcolor;
+ }
+
+@each $red, $tpx in $redes{
+    #footer__redes--#{$red}{
+        width: $tpx;
+    }
+}
+#header__logo {
+    background-color: blueviolet;
+    text-align: center;
+    padding: 10px;
+    font-size: 90px;
+    text-shadow:5px 5px 5px #000000;
+}
+#body {
+    color: white; 
+    background-color: black; 
+}
+#footer__redes {
+    font-style: none;
+    display: inline-block;
+    position: relative;
+    left: 1680px;
+}
+#article__formasdepagotexto {
+    display: block;
+    text-align: center;
+}
+#article__formasdepagoh2 {
+    font-size: 40px;
+    color: blueviolet;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-weight: 10;
+}
+#article__formasdepagoli {
+    font-weight: bolder;
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    list-style-type: square;
+}
+#article__imagenjuegos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+}
+#article__fuenteseleccionar {
+    border-bottom: solid white 3px;
+    color: blueviolet;
+    font-weight: bold;
+}
+#article__listaservicios1 {
+    border: $borderviolet;
+    color: blueviolet;
+    background-color: white;
+    font-weight: bold;
+    @if $servicio == Boosting {color: red;}
+    @else if $servicio == Coaching {color: green;}
+    @else if $servicio == Smurfs {color: yellow;}
+}
+#article__listaservicios2 {
+@extend #article__listaservicios1; }
+
+#article__listaservicios3 {
+@extend #article__listaservicios1; }
+
+#article__listaservicios4 {
+@extend #article__listaservicios1; }
+
+#article__listaservicios5 {
+@extend #article__listaservicios1; }
+
+.body__margintop {
+    margin-top: 50px;
+}
+@media (max-width: 768px) {
+    #header__logo {
+    background-color: red;
+    font-size: 50px;
+    }
+}
+@for $i from 1 through 5 {
+    .servicios-#{$i} {
+        border: $borderviolet;
+        color: blueviolet;
+        background-color: white;
+        font-weight: bold;
+        @if $servicio == Boosting {color: red;}
+        @else if $servicio == Coaching {color: green;}
+        @else if $servicio == Smurfs {color: yellow;} }
+}
+@each $pais in br, arg, otros {
+    .#{$pais}TextColor {
+        @include tamaño(40px,green )
+    }
+}
